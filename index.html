@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Max Alberhasky, Ph.D. — Marketing Professor & Consumer Financial Psychology Researcher</title>
+<meta name="description" content="Max Alberhasky is an Assistant Professor of Marketing at California State University, Long Beach. His research examines money, social relationships, and well-being.">
+<meta property="og:title" content="Max Alberhasky, Ph.D.">
+<meta property="og:description" content="Assistant Professor of Marketing at CSULB. Research at the intersection of money, social relationships, and well-being.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --bg2: #faf7f2;
+    --surface: rgba(154, 98, 52, 0.045); --surface2: rgba(154, 98, 52, 0.09);
+    --border: rgba(120, 108, 94, 0.18);
+    --gold: #9a6234; --gold2: #6b4423;
+    --text: #1f1b16; --muted: #7b7268;
+    --accent: #b07d4e; --accent2: #7a5c3e;
+    --green: #6aa84f; --radius: 16px;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  a { color: var(--gold); text-decoration: none; transition: color .2s; }
+  a:hover { color: var(--gold2); }
+  ::selection { background: rgba(154, 98, 52, .22); }
+  img { max-width: 100%; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    backdrop-filter: blur(20px) saturate(1.5);
+    background: rgba(255,255,255,0.92);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; background: linear-gradient(135deg, var(--gold), var(--gold2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .nav-links { display: flex; gap: 1.4rem; list-style: none; }
+  .nav-links a { font-size: .76rem; font-weight: 500; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; position: relative; padding-bottom: 3px; }
+  .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width .3s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: .4rem .7rem; border-radius: 8px; cursor: pointer; font-size: 1rem; }
+  .nav-mobile { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(255,255,255,.98); border-bottom: 1px solid var(--border); padding: 1.2rem 2rem; gap: .8rem; }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a { color: var(--muted); font-size: .9rem; }
+  .nav-mobile a:hover { color: var(--gold2); }
+
+  /* ---------- hero ---------- */
+  #hero { position: relative; z-index: 1; min-height: 100vh; display: flex; align-items: center; padding: 7rem 5vw 5rem; background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(154,98,52,.07), transparent), radial-gradient(ellipse 40% 40% at 85% 85%, rgba(154,98,52,.05), transparent); }
+  .hero-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); background: rgba(154,98,52,.1); border: 1px solid rgba(154,98,52,.25); padding: .35rem 1.1rem; border-radius: 50px; margin-bottom: 2rem; }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
+  .hero-photo { display: block; width: 130px; height: 130px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid transparent; background: linear-gradient(var(--bg), var(--bg)) padding-box, linear-gradient(135deg, var(--gold), var(--accent)) border-box; box-shadow: 0 0 40px rgba(154,98,52,.2); margin: 0 auto 1.8rem; }
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5.5vw, 3.8rem); line-height: 1.12; font-weight: 700; margin-bottom: .8rem; }
+  .name-gradient { background: linear-gradient(135deg, var(--gold) 20%, var(--accent) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-subtitle { font-size: clamp(.95rem, 2vw, 1.2rem); color: var(--muted); font-weight: 300; margin-bottom: 1.5rem; min-height: 1.8rem; }
+  #typed { color: var(--gold2); font-weight: 500; }
+  .hero-bio { max-width: 660px; margin: 0 auto 2.2rem; font-size: 1rem; color: #4a443c; line-height: 1.82; }
+  .hero-cta { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
+  .btn { padding: .72rem 1.7rem; border-radius: 50px; font-size: .88rem; font-weight: 500; cursor: pointer; transition: all .25s; display: inline-flex; align-items: center; gap: .45rem; border: none; }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), #5c3a1e); color: #ffffff; box-shadow: 0 4px 22px rgba(154,98,52,.3); }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(154,98,52,.4); color: #ffffff; }
+  .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+  .btn-ghost:hover { background: var(--surface2); transform: translateY(-2px); color: var(--text); }
+
+  /* ---------- section shell ---------- */
+  section { position: relative; z-index: 1; padding: 5.5rem 5vw; }
+  .inner { max-width: 1100px; margin: 0 auto; }
+  .stag { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent2); margin-bottom: .6rem; }
+  .stag::before { content: ''; width: 20px; height: 1px; background: var(--accent2); }
+  h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 600; margin-bottom: .9rem; }
+  h3.subhead { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600; margin: 3rem 0 1.4rem; }
+  .sdiv { width: 56px; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); border-radius: 2px; margin-bottom: 2.5rem; }
+  .section-lead { color: var(--muted); max-width: 620px; margin-bottom: 2.2rem; font-size: .98rem; }
+
+  /* ---------- about ---------- */
+  #about { background: radial-gradient(ellipse 55% 50% at 5% 50%, rgba(176,125,78,.08), transparent); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center; }
+  .about-photo-col { position: relative; }
+  .photo-frame { border-radius: 24px; padding: 3px; background: linear-gradient(135deg, var(--gold) 0%, var(--accent) 100%); box-shadow: 0 24px 60px rgba(0,0,0,.1); }
+  .photo-inner { border-radius: 22px; overflow: hidden; background: #efe6da; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; }
+  .photo-inner img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .badges { position: absolute; bottom: -.8rem; right: -1rem; display: flex; flex-direction: column; gap: .5rem; }
+  .badge { background: rgba(255,255,255,0.96); backdrop-filter: blur(14px); border: 1px solid var(--border); border-radius: 12px; padding: .5rem .9rem; font-size: .76rem; font-weight: 500; display: flex; align-items: center; gap: .4rem; box-shadow: 0 4px 18px rgba(0,0,0,.08); }
+  .bdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .about-text p { color: #3d382f; font-size: .99rem; margin-bottom: 1.1rem; line-height: 1.8; }
+  .pills { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.6rem; }
+  .pill { padding: .35rem .95rem; border-radius: 50px; font-size: .8rem; font-weight: 500; border: 1px solid rgba(154,98,52,.3); color: var(--gold2); background: rgba(154,98,52,.06); }
+  .edu-list { margin-top: 1.8rem; display: flex; flex-direction: column; gap: .9rem; }
+  .edu-item { display: flex; gap: .9rem; align-items: flex-start; padding: .9rem 1.1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+  .edu-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .edu-deg { font-weight: 600; font-size: .92rem; }
+  .edu-sch { color: var(--muted); font-size: .83rem; }
+
+  /* ---------- research cards ---------- */
+  #research { background: radial-gradient(ellipse 50% 55% at 95% 50%, rgba(154,98,52,.05), transparent); }
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.3rem; }
+  .rcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.7rem; transition: all .3s; position: relative; overflow: hidden; cursor: default; }
+  .rcard::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(176,125,78,.08), rgba(154,98,52,.05)); opacity: 0; transition: opacity .3s; }
+  .rcard:hover { transform: translateY(-4px); border-color: rgba(154,98,52,.28); box-shadow: 0 14px 40px rgba(0,0,0,.08); }
+  .rcard:hover::before { opacity: 1; }
+  .rcard-icon { font-size: 1.9rem; margin-bottom: .9rem; }
+  .rcard h3 { font-size: 1.03rem; font-weight: 600; margin-bottom: .6rem; }
+  .rcard p { color: var(--muted); font-size: .88rem; line-height: 1.65; }
+
+  /* ---------- publications ---------- */
+  #publications { background: var(--bg2); }
+  .pub-controls { display: flex; gap: .9rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.8rem; }
+  .pub-search { flex: 1; min-width: 200px; background: #fff; border: 1px solid var(--border); border-radius: 50px; padding: .65rem 1.3rem; color: var(--text); font-size: .88rem; outline: none; transition: border-color .2s; font-family: inherit; }
+  .pub-search:focus { border-color: var(--gold); }
+  .pub-search::placeholder { color: var(--muted); }
+  .filters { display: flex; gap: .45rem; flex-wrap: wrap; }
+  .filt { padding: .4rem 1rem; border-radius: 50px; font-size: .78rem; font-weight: 500; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; transition: all .2s; font-family: inherit; }
+  .filt.active, .filt:hover { background: rgba(154,98,52,.1); border-color: rgba(154,98,52,.5); color: var(--gold2); }
+  .pub-list { display: flex; flex-direction: column; gap: 1.1rem; }
+  .pub { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.7rem; transition: all .25s; border-left: 3px solid transparent; }
+  .pub:hover { border-left-color: var(--gold); transform: translateX(3px); }
+  .pub.hidden { display: none; }
+  .pub-meta { display: flex; gap: .7rem; flex-wrap: wrap; align-items: center; margin-bottom: .55rem; }
+  .pub-year { font-size: .73rem; font-weight: 700; letter-spacing: .08em; color: var(--gold); background: rgba(154,98,52,.1); padding: .18rem .6rem; border-radius: 50px; }
+  .pub-jnl { font-size: .8rem; color: var(--accent2); font-style: italic; }
+  .pub-tag { font-size: .7rem; padding: .15rem .5rem; border-radius: 50px; background: rgba(176,125,78,.12); color: var(--accent2); border: 1px solid rgba(176,125,78,.2); }
+  .pub-status { font-size: .7rem; padding: .15rem .55rem; border-radius: 50px; background: rgba(106,168,79,.12); color: #4c7a37; border: 1px solid rgba(106,168,79,.28); font-weight: 500; }
+  .pub-title { font-size: .97rem; font-weight: 500; margin-bottom: .4rem; line-height: 1.5; }
+  .pub-authors { font-size: .83rem; color: var(--muted); }
+  .pub-authors strong { color: var(--gold2); }
+  .pub-links { display: flex; gap: .9rem; margin-top: .8rem; flex-wrap: wrap; }
+  .plink { display: inline-flex; align-items: center; gap: .3rem; font-size: .78rem; color: var(--gold); }
+  .plink:hover { gap: .5rem; }
+  .empty-note { color: var(--muted); font-size: .88rem; padding: 1.5rem 0; display: none; }
+
+  /* ---------- conferences ---------- */
+  #conferences { background: radial-gradient(ellipse 50% 55% at 5% 50%, rgba(176,125,78,.07), transparent); }
+  .conf-list { display: flex; flex-direction: column; gap: .9rem; }
+  .conf-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.6rem; transition: all .25s; border-left: 3px solid transparent; }
+  .conf-item:hover { border-left-color: var(--accent); transform: translateX(3px); }
+  .conf-item.hidden { display: none; }
+  .conf-meta { display: flex; gap: .7rem; flex-wrap: wrap; align-items: center; margin-bottom: .45rem; }
+  .conf-year { font-size: .73rem; font-weight: 700; letter-spacing: .08em; color: var(--accent2); background: rgba(176,125,78,.13); padding: .18rem .6rem; border-radius: 50px; }
+  .conf-venue { font-size: .8rem; color: var(--muted); font-style: italic; }
+  .conf-type-tag { font-size: .7rem; padding: .15rem .5rem; border-radius: 50px; background: rgba(154,98,52,.08); color: var(--gold); border: 1px solid rgba(154,98,52,.2); }
+  .conf-title { font-size: .95rem; font-weight: 500; margin-bottom: .3rem; line-height: 1.5; }
+  .conf-loc { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+  .showmore { margin-top: 1.4rem; background: none; border: 1px solid var(--border); color: var(--gold2); padding: .55rem 1.4rem; border-radius: 50px; font-size: .82rem; cursor: pointer; font-family: inherit; transition: all .2s; }
+  .showmore:hover { background: var(--surface2); border-color: rgba(154,98,52,.45); }
+
+  /* ---------- honors ---------- */
+  #honors { background: var(--bg2); }
+  .honors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.1rem; }
+  .honor-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.4rem; transition: all .25s; }
+  .honor-card:hover { transform: translateY(-3px); border-color: rgba(154,98,52,.28); box-shadow: 0 8px 28px rgba(0,0,0,.07); }
+  .honor-card.hidden { display: none; }
+  .honor-header { display: flex; align-items: flex-start; gap: .75rem; margin-bottom: .4rem; }
+  .honor-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .honor-name { font-size: .9rem; font-weight: 600; color: var(--text); line-height: 1.4; }
+  .honor-org { font-size: .8rem; color: var(--muted); margin-top: .2rem; }
+  .honor-year { font-size: .72rem; font-weight: 700; color: var(--gold); background: rgba(154,98,52,.1); padding: .15rem .55rem; border-radius: 50px; display: inline-block; margin-top: .5rem; }
+
+  /* ---------- teaching ---------- */
+  #teaching { background: var(--bg); }
+  .crs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.1rem; }
+  .crs { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.7rem; transition: all .25s; }
+  .crs:hover { transform: translateY(-3px); border-color: rgba(176,125,78,.3); box-shadow: 0 8px 28px rgba(0,0,0,.07); }
+  .crs-num { font-size: .73rem; font-weight: 700; letter-spacing: .12em; color: var(--accent2); text-transform: uppercase; margin-bottom: .4rem; }
+  .crs h3 { font-size: 1rem; font-weight: 600; margin-bottom: .55rem; }
+  .crs p { font-size: .86rem; color: var(--muted); line-height: 1.6; }
+  .crs-level { display: inline-block; margin-top: .75rem; font-size: .73rem; padding: .18rem .65rem; border-radius: 50px; background: rgba(176,125,78,.11); border: 1px solid rgba(176,125,78,.22); color: var(--accent2); }
+  .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.1rem; margin-top: 1.4rem; }
+  .quote { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; padding: 1.2rem 1.4rem; font-size: .88rem; color: #4a443c; font-style: italic; line-height: 1.7; }
+  .quote span { display: block; margin-top: .6rem; font-style: normal; font-size: .76rem; color: var(--muted); }
+
+  /* ---------- writing ---------- */
+  #writing { background: var(--bg2); }
+  .year-chips { display: flex; gap: .45rem; flex-wrap: wrap; margin-bottom: 1.6rem; }
+  .ychip { padding: .32rem .85rem; border-radius: 50px; font-size: .76rem; font-weight: 500; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; transition: all .2s; font-family: inherit; }
+  .ychip.active, .ychip:hover { background: rgba(154,98,52,.1); border-color: rgba(154,98,52,.5); color: var(--gold2); }
+  .post-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .post { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.4rem; display: flex; flex-direction: column; gap: .5rem; transition: all .25s; }
+  .post:hover { transform: translateY(-3px); border-color: rgba(154,98,52,.28); box-shadow: 0 10px 30px rgba(0,0,0,.07); }
+  .post.hidden { display: none; }
+  .post-date { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .post-title { font-size: .93rem; font-weight: 500; line-height: 1.5; color: var(--text); }
+  .post a.post-title:hover { color: var(--gold2); }
+  .post-link { margin-top: auto; font-size: .78rem; color: var(--gold); display: inline-flex; gap: .3rem; padding-top: .5rem; }
+  .post-link:hover { gap: .5rem; }
+
+  /* ---------- media ---------- */
+  #media { background: radial-gradient(ellipse 40% 50% at 0% 100%, rgba(154,98,52,.05), transparent); }
+  .press-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
+  .pcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; transition: all .28s; }
+  .pcard:hover { transform: translateY(-4px); border-color: rgba(154,98,52,.28); box-shadow: 0 12px 36px rgba(0,0,0,.08); }
+  .pcard-source { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .pcard-title { font-size: .93rem; font-weight: 500; line-height: 1.45; color: var(--text); }
+  .pcard-meta { font-size: .78rem; color: var(--muted); }
+  .pcard-link { margin-top: auto; display: inline-flex; align-items: center; gap: .3rem; font-size: .78rem; color: var(--gold); padding-top: .7rem; }
+  .pcard-link:hover { gap: .5rem; }
+
+  /* ---------- contact ---------- */
+  #contact { background: radial-gradient(ellipse 65% 60% at 50% 100%, rgba(176,125,78,.11), transparent); text-align: center; }
+  .contact-wrap { max-width: 660px; margin: 0 auto; }
+  .contact-wrap p { color: var(--muted); margin-bottom: 2rem; font-size: .98rem; }
+  .clinks { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
+  .clink { display: flex; align-items: center; gap: .5rem; padding: .7rem 1.4rem; border-radius: 50px; border: 1px solid var(--border); color: var(--text); font-size: .88rem; transition: all .25s; background: var(--surface); }
+  .clink:hover { border-color: var(--gold); color: var(--gold2); transform: translateY(-2px); background: rgba(154,98,52,.07); }
+
+  footer { text-align: center; padding: 1.8rem 5vw; border-top: 1px solid var(--border); color: var(--muted); font-size: .8rem; position: relative; z-index: 1; }
+  footer strong { color: var(--gold); }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.vis { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  @media (max-width: 820px) {
+    nav { padding: .9rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-menu-btn { display: block; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-photo-col { max-width: 260px; margin: 0 auto 1.5rem; }
+    .badges { right: -.4rem; }
+    section { padding: 4rem 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-brand">Max Alberhasky, Ph.D.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#media">Media</a></li>
+    <li><a href="assets/cv.pdf">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#conferences">Conferences</a>
+    <a href="#honors">Honors</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#writing">Writing</a>
+    <a href="#media">Media</a>
+    <a href="assets/cv.pdf">CV</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="pulse"></span> Assistant Professor of Marketing · CSULB</div>
+    <img src="assets/max-alberhasky.jpg" alt="Max Alberhasky" class="hero-photo">
+    <h1><span class="name-gradient">Max Alberhasky</span>, Ph.D.</h1>
+    <p class="hero-subtitle">Researching <span id="typed"></span></p>
+    <p class="hero-bio">
+      My research lies at the intersection of money, social relationships, and well-being. I use lab and field
+      experiments, text analysis, and qualitative methods to investigate consumer financial psychology — how the
+      way we spend, split, and talk about money shapes the relationships and lives we build around it.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="assets/cv.pdf">Download CV</a>
+      <a class="btn btn-ghost" href="#publications">View Research</a>
+      <a class="btn btn-ghost" href="mailto:max.alberhasky@csulb.edu">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="inner">
+    <div class="stag">About</div>
+    <h2>Money, relationships, and the space between them</h2>
+    <div class="sdiv"></div>
+    <div class="about-grid reveal">
+      <div class="about-photo-col">
+        <div class="photo-frame">
+          <div class="photo-inner"><img src="assets/max-alberhasky.jpg" alt="Max Alberhasky"></div>
+        </div>
+        <div class="badges">
+          <div class="badge"><span class="bdot" style="background:var(--gold)"></span> CSULB</div>
+          <div class="badge"><span class="bdot" style="background:var(--accent)"></span> UT Austin Ph.D.</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p>
+          Hello. My name is Max Alberhasky. I'm an Assistant Professor of Marketing at California State University,
+          Long Beach. I moved here from Austin, where I completed my Ph.D. at the University of Texas at Austin,
+          McCombs School of Business.
+        </p>
+        <p>
+          My work asks what happens to a relationship when money enters it — when a shared dinner becomes a Venmo
+          request, when a gift's price signals something the giver never intended, when a fee shows up at checkout
+          without explanation. I study these questions with lab and field experiments, text analysis, and qualitative
+          methods.
+        </p>
+        <p>
+          Alongside the academic work, I write the <em>Psychology, Money, and Happiness</em> column at
+          <em>Psychology Today</em>, and I speak with outlets like CBS, MarketWatch, and Maine Public Radio about
+          the everyday psychology of spending.
+        </p>
+        <div class="pills">
+          <span class="pill">Consumer Financial Psychology</span>
+          <span class="pill">Money &amp; Relationships</span>
+          <span class="pill">Well-Being</span>
+          <span class="pill">Gift Giving</span>
+          <span class="pill">Field Experiments</span>
+          <span class="pill">Text Analysis</span>
+        </div>
+        <div class="edu-list">
+          <div class="edu-item">
+            <div class="edu-icon">🎓</div>
+            <div><div class="edu-deg">Ph.D., Marketing — 2023</div><div class="edu-sch">University of Texas at Austin, McCombs School of Business</div></div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-icon">📘</div>
+            <div><div class="edu-deg">M.S., Marketing — 2019</div><div class="edu-sch">University of Texas at Austin</div></div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-icon">🧠</div>
+            <div><div class="edu-deg">B.S., Psychology — 2015</div><div class="edu-sch">University of Arizona</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH INTERESTS ================= -->
+<section id="research">
+  <div class="inner">
+    <div class="stag">Research</div>
+    <h2>What I study</h2>
+    <div class="sdiv"></div>
+    <p class="section-lead">
+      Five threads run through my work. Each one starts from the same question: how does money change the way people
+      relate to each other, and to themselves?
+    </p>
+    <div class="grid3 reveal">
+      <div class="rcard">
+        <div class="rcard-icon">💸</div>
+        <h3>Payments &amp; Transactionality</h3>
+        <p>How peer-to-peer payment services like Venmo turn shared experiences into ledger entries — and make those experiences less enjoyable.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-icon">🎁</div>
+        <h3>Gift Giving &amp; Inequality</h3>
+        <p>Why the income gap between giver and recipient shifts how much people spend, and what that spending is meant to say.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-icon">🧾</div>
+        <h3>Fees &amp; Transparency</h3>
+        <p>Why opaque add-on fees breed distrust in ways that equivalent transparent fees do not.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-icon">😊</div>
+        <h3>Spending &amp; Well-Being</h3>
+        <p>Why high-skill activities make people happier yet go unchosen, and how time and money trade off against happiness.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-icon">🪪</div>
+        <h3>Financial Behavior as Signal</h3>
+        <p>How saving and spending patterns become social signals — and how personality maps onto what people earn.</p>
+      </div>
+      <div class="rcard">
+        <div class="rcard-icon">🤝</div>
+        <h3>Weak Ties &amp; Prosociality</h3>
+        <p>How brief interactions with neighbors and near-strangers in one's community increase prosocial behavior.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PUBLICATIONS ================= -->
+<section id="publications">
+  <div class="inner">
+    <div class="stag">Publications</div>
+    <h2>Peer-reviewed articles</h2>
+    <div class="sdiv"></div>
+    <div class="pub-controls">
+      <input type="search" class="pub-search" id="pubSearch" placeholder="Search publications…" aria-label="Search publications">
+      <div class="filters" id="pubFilters">
+        <button class="filt active" data-f="all">All</button>
+        <button class="filt" data-f="money">Money</button>
+        <button class="filt" data-f="wellbeing">Well-Being</button>
+        <button class="filt" data-f="decision">Decision Making</button>
+        <button class="filt" data-f="ai">AI</button>
+        <button class="filt" data-f="methods">Methods</button>
+      </div>
+    </div>
+    <div class="pub-list" id="pubList">
+
+      <article class="pub" data-tags="money ai">
+        <div class="pub-meta">
+          <span class="pub-year">2025</span>
+          <span class="pub-jnl">Computers in Human Behavior</span>
+          <span class="pub-tag">AI</span><span class="pub-tag">Money</span>
+        </div>
+        <div class="pub-title">The Trusted Partner for Financial Decision Making: Romantic Partner or AI?</div>
+        <div class="pub-authors">Hermann, E., &amp; <strong>Alberhasky, M.</strong></div>
+        <div class="pub-links"><a class="plink" href="https://doi.org/10.1016/j.chb.2025.108877" target="_blank" rel="noopener">Read article →</a></div>
+      </article>
+
+      <article class="pub" data-tags="methods">
+        <div class="pub-meta">
+          <span class="pub-year">2024</span>
+          <span class="pub-jnl">PLoS ONE</span>
+          <span class="pub-tag">Narrative</span><span class="pub-tag">Text Analysis</span>
+        </div>
+        <div class="pub-title">Songs Tell a Story: The Arc of Narrative for Music</div>
+        <div class="pub-authors"><strong>Alberhasky, M.</strong>, &amp; Durkee, P. K.</div>
+        <div class="pub-links"><a class="plink" href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0303188" target="_blank" rel="noopener">Read article →</a></div>
+      </article>
+
+      <article class="pub" data-tags="wellbeing">
+        <div class="pub-meta">
+          <span class="pub-year">2023</span>
+          <span class="pub-jnl">Psychology &amp; Marketing</span>
+          <span class="pub-tag">Well-Being</span>
+        </div>
+        <div class="pub-title">Skills Make You Happy: Why High (vs. Low) Skill Activities Make Consumers Happier, Yet They Do Not Choose Them</div>
+        <div class="pub-authors"><strong>Alberhasky, M.</strong>, &amp; Raghunathan, R.</div>
+        <div class="pub-links"><a class="plink" href="https://onlinelibrary.wiley.com/share/author/HAJITH5S92DMDSFA8EQY?target=10.1002/mar.21886" target="_blank" rel="noopener">Read article →</a></div>
+      </article>
+
+      <article class="pub" data-tags="money">
+        <div class="pub-meta">
+          <span class="pub-year">2023</span>
+          <span class="pub-jnl">Journal of the Association for Consumer Research</span>
+          <span class="pub-tag">Gift Giving</span><span class="pub-tag">Inequality</span>
+        </div>
+        <div class="pub-title">Trickle Down Spending: The Role of Income Inequality on Gift Spending Decisions</div>
+        <div class="pub-authors"><strong>Alberhasky, M.</strong>, &amp; Gershoff, A. D.</div>
+        <div class="pub-links"><a class="plink" href="https://www.journals.uchicago.edu/doi/abs/10.1086/726424?journalCode=jacr" target="_blank" rel="noopener">Read article →</a></div>
+      </article>
+
+      <article class="pub" data-tags="decision">
+        <div class="pub-meta">
+          <span class="pub-year">2021</span>
+          <span class="pub-jnl">Journal of Behavioral and Experimental Economics</span>
+          <span class="pub-tag">Framing</span>
+        </div>
+        <div class="pub-title">Framing Zero: Why Losing Nothing is Better Than Gaining Nothing</div>
+        <div class="pub-authors">Wardley, M., &amp; <strong>Alberhasky, M.</strong></div>
+        <div class="pub-links"><a class="plink" href="https://www.maxalberhasky.com/uploads/1/4/0/2/140258278/framing_zero.pdf" target="_blank" rel="noopener">PDF →</a></div>
+      </article>
+
+      <article class="pub" data-tags="methods">
+        <div class="pub-meta">
+          <span class="pub-year">2020</span>
+          <span class="pub-jnl">Journal of Individual Differences</span>
+          <span class="pub-tag">Methods</span>
+        </div>
+        <div class="pub-title">On the Psychology of the Psychology Subject Pool: An Exploratory Test of the Good Student Effect</div>
+        <div class="pub-authors">Sadeghiyeh, H., Wang, S., Kyllo, H., <strong>Alberhasky, M.</strong>, Kellohen, K., Savita, S., &amp; Wilson, R.</div>
+        <div class="pub-links"><a class="plink" href="https://www.maxalberhasky.com/uploads/1/4/0/2/140258278/on_the_psychology_of_the_psychology_subject_pool.pdf" target="_blank" rel="noopener">PDF →</a></div>
+      </article>
+
+      <article class="pub" data-tags="decision">
+        <div class="pub-meta">
+          <span class="pub-year">2020</span>
+          <span class="pub-jnl">Scientific Reports</span>
+          <span class="pub-tag">Exploration</span>
+        </div>
+        <div class="pub-title">Temporal Discounting Correlates with Directed Exploration but not with Random Exploration</div>
+        <div class="pub-authors">Sadeghiyeh, H., Wang, S., <strong>Alberhasky, M.</strong>, Kyllo, H., Shenhav, A., &amp; Wilson, R.</div>
+        <div class="pub-links"><a class="plink" href="https://www.maxalberhasky.com/uploads/1/4/0/2/140258278/temporal_discounting_correlates_with_directed_exploration_but_not_with_random_exploration.pdf" target="_blank" rel="noopener">PDF →</a></div>
+      </article>
+
+    </div>
+    <p class="empty-note" id="pubEmpty">No publications match that search.</p>
+
+    <h3 class="subhead">Working papers &amp; work in progress</h3>
+    <div class="pub-list">
+      <article class="pub">
+        <div class="pub-meta"><span class="pub-status">Second-Round Revise &amp; Resubmit</span><span class="pub-jnl">Journal of Research in Personality</span></div>
+        <div class="pub-title">Personalities That Pay: The Relationship Between Personality and Income</div>
+        <div class="pub-authors"><strong>Alberhasky, M.</strong></div>
+      </article>
+      <article class="pub">
+        <div class="pub-meta"><span class="pub-status">Under Review</span><span class="pub-jnl">Journal of Consumer Psychology</span></div>
+        <div class="pub-title">Saving and Spending as Social Signals: How Financial Behavior Stereotypes Shape Interpersonal Evaluation</div>
+        <div class="pub-authors"><strong>Alberhasky, M.</strong>, Gladstone, J., &amp; Aka, A.</div>
+      </article>
+      <article class="pub">
+        <div class="pub-meta"><span class="pub-status">Under Review</span><span class="pub-jnl">International Journal of Research in Marketing</span></div>
+        <div class="pub-title">What Am I Paying For? Fee-Label Non-Transparency and Consumer Distrust</div>
+        <div class="pub-authors"><strong>Alberhasky, M.</strong>, Raghunathan, R., Srivastava, J., &amp; Yu, L.</div>
+      </article>
+      <article class="pub">
+        <div class="pub-meta"><span class="pub-status">Work in Progress</span></div>
+        <div class="pub-title">Splitting, More Wisely: Peer-to-Peer Payment Services Can Make Social Relationships More Transactional and Experiences Less Enjoyable</div>
+        <div class="pub-authors"><strong>Alberhasky, M.</strong>, &amp; Kumar, A.</div>
+      </article>
+      <article class="pub">
+        <div class="pub-meta"><span class="pub-status">Work in Progress</span></div>
+        <div class="pub-title">Hello, Neighbor: Interactions with Weak Ties in One's Community Increase Prosocial Behavior</div>
+        <div class="pub-authors"><strong>Alberhasky, M.</strong>, &amp; Kumar, A.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONFERENCES ================= -->
+<section id="conferences">
+  <div class="inner">
+    <div class="stag">Conferences</div>
+    <h2>Selected presentations</h2>
+    <div class="sdiv"></div>
+    <div class="conf-list" id="confList"></div>
+    <button class="showmore" id="confMore">Show all 18 presentations</button>
+  </div>
+</section>
+
+<!-- ================= HONORS ================= -->
+<section id="honors">
+  <div class="inner">
+    <div class="stag">Honors</div>
+    <h2>Awards, grants &amp; fellowships</h2>
+    <div class="sdiv"></div>
+    <div class="honors-grid" id="honorsGrid"></div>
+    <button class="showmore" id="honorsMore">Show all honors</button>
+  </div>
+</section>
+
+<!-- ================= TEACHING ================= -->
+<section id="teaching">
+  <div class="inner">
+    <div class="stag">Teaching</div>
+    <h2>In the classroom</h2>
+    <div class="sdiv"></div>
+    <p class="section-lead">
+      I enjoy my interactions with students, and I bring insights from my own research into class with relevant,
+      current examples that make marketing and consumer behavior concepts concrete.
+    </p>
+    <div class="crs-grid reveal">
+      <div class="crs">
+        <div class="crs-num">CSULB</div>
+        <h3>Consumer Behavior</h3>
+        <p>Highest instructor evaluation in the department — <strong>6.0 / 6</strong>, Fall 2024.</p>
+        <span class="crs-level">Undergraduate</span>
+      </div>
+      <div class="crs">
+        <div class="crs-num">CSULB</div>
+        <h3>Principles of Marketing</h3>
+        <p>Core marketing course for undergraduate business majors at California State University, Long Beach.</p>
+        <span class="crs-level">Undergraduate</span>
+      </div>
+      <div class="crs">
+        <div class="crs-num">UT Austin · McCombs</div>
+        <h3>Principles of Marketing</h3>
+        <p>Highest instructor evaluation — <strong>5.0 / 5</strong>, Fall 2019. Recipient of the Fred Moore Award for Teaching Excellence, given to the top two assistant instructors at UT Austin each year.</p>
+        <span class="crs-level">Undergraduate</span>
+      </div>
+    </div>
+    <h3 class="subhead">What students say</h3>
+    <div class="quotes">
+      <div class="quote">"Such a wonderful professor. He made the class really engaging and informative…"<span>— Student evaluation</span></div>
+      <div class="quote">"This was a great course. Materials were extremely organized…"<span>— Student evaluation</span></div>
+      <div class="quote">"You were an amazing professor, you truly showed an interest in the students…"<span>— Student evaluation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WRITING ================= -->
+<section id="writing">
+  <div class="inner">
+    <div class="stag">Writing</div>
+    <h2>Psychology, Money &amp; Happiness</h2>
+    <div class="sdiv"></div>
+    <p class="section-lead">
+      My column at <em>Psychology Today</em> translates research on spending, saving, and relationships for a general
+      audience.
+    </p>
+    <div class="pub-controls">
+      <input type="search" class="pub-search" id="postSearch" placeholder="Search posts…" aria-label="Search blog posts">
+    </div>
+    <div class="year-chips" id="yearChips"></div>
+    <div class="post-grid" id="postGrid"></div>
+    <p class="empty-note" id="postEmpty">No posts match that search.</p>
+    <button class="showmore" id="postMore">Show all posts</button>
+  </div>
+</section>
+
+<!-- ================= MEDIA ================= -->
+<section id="media">
+  <div class="inner">
+    <div class="stag">Media</div>
+    <h2>In the press</h2>
+    <div class="sdiv"></div>
+    <div class="press-grid reveal">
+      <div class="pcard">
+        <div class="pcard-source">CBS Los Angeles</div>
+        <div class="pcard-title">Navigating relationships and personal finance during the holidays</div>
+        <div class="pcard-meta">Television interview</div>
+        <a class="pcard-link" href="https://www.youtube.com/watch?v=rhni2b3j_6s" target="_blank" rel="noopener">Watch →</a>
+      </div>
+      <div class="pcard">
+        <div class="pcard-source">Maine Public Radio</div>
+        <div class="pcard-title">Tipping culture: the psychology, etiquette, and social norms of tipping</div>
+        <div class="pcard-meta">Maine Calling · November 17, 2024</div>
+        <a class="pcard-link" href="https://www.mainepublic.org/show/maine-calling/2024-11-17/tipping-culture" target="_blank" rel="noopener">Listen →</a>
+      </div>
+      <div class="pcard">
+        <div class="pcard-source">Yahoo Finance</div>
+        <div class="pcard-title">What's the Hidden Motivation Behind the $50 Gift Card You Put Under the Tree?</div>
+        <div class="pcard-meta">On income inequality and gift giving</div>
+        <a class="pcard-link" href="https://finance.yahoo.com/news/whats-the-hidden-motivation-behind-the-50-gift-card-you-put-under-the-tree-161950561.html" target="_blank" rel="noopener">Read →</a>
+      </div>
+      <div class="pcard">
+        <div class="pcard-source">MarketWatch</div>
+        <div class="pcard-title">Worried about the election? Experts share what to do with your money</div>
+        <div class="pcard-meta">On emotions and financial decisions</div>
+        <a class="pcard-link" href="https://www.marketwatch.com/story/worried-about-the-election-experts-share-what-to-do-with-your-money-6440994a" target="_blank" rel="noopener">Read →</a>
+      </div>
+      <div class="pcard">
+        <div class="pcard-source">Bored Panda</div>
+        <div class="pcard-title">Shaming tipping culture: why some businesses are eliminating tips</div>
+        <div class="pcard-meta">Expert commentary</div>
+        <a class="pcard-link" href="https://www.boredpanda.com/shaming-tipping-culture/" target="_blank" rel="noopener">Read →</a>
+      </div>
+      <div class="pcard">
+        <div class="pcard-source">Bored Panda</div>
+        <div class="pcard-title">Tipflation: when a server is unhappy with the tip</div>
+        <div class="pcard-meta">Expert commentary</div>
+        <a class="pcard-link" href="https://www.boredpanda.com/server-unhappy-with-tip-customers-takes-it-back/" target="_blank" rel="noopener">Read →</a>
+      </div>
+      <div class="pcard">
+        <div class="pcard-source">Bored Panda</div>
+        <div class="pcard-title">Rare lucky coincidences: luck and fate from a social science perspective</div>
+        <div class="pcard-meta">Expert commentary</div>
+        <a class="pcard-link" href="https://www.boredpanda.com/rare-lucky-coincidences/" target="_blank" rel="noopener">Read →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="inner contact-wrap">
+    <div class="stag" style="justify-content:center">Contact</div>
+    <h2>Get in touch</h2>
+    <div class="sdiv" style="margin-left:auto;margin-right:auto"></div>
+    <p>
+      I'm always glad to hear from students, collaborators, and journalists working on stories about money and
+      behavior. The fastest way to reach me is email.
+    </p>
+    <div class="clinks">
+      <a class="clink" href="mailto:max.alberhasky@csulb.edu">✉️ max.alberhasky@csulb.edu</a>
+      <a class="clink" href="https://www.linkedin.com/in/max-alberhasky-769421273/" target="_blank" rel="noopener">in LinkedIn</a>
+      <a class="clink" href="https://twitter.com/maxalberhasky" target="_blank" rel="noopener">𝕏 Twitter</a>
+      <a class="clink" href="https://www.psychologytoday.com/us/contributors/max-alberhasky-phd" target="_blank" rel="noopener">✍️ Psychology Today</a>
+      <a class="clink" href="assets/cv.pdf">📄 Curriculum Vitae</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="yr"></span> <strong>Max Alberhasky, Ph.D.</strong> · Assistant Professor of Marketing, California State University, Long Beach
+</footer>
+
+<script>
+/* ---------- year ---------- */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- mobile nav ---------- */
+(function () {
+  var btn = document.getElementById('menuBtn'), menu = document.getElementById('navMobile');
+  btn.addEventListener('click', function () {
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  });
+})();
+
+/* ---------- typed subtitle ---------- */
+(function () {
+  var words = ['consumer financial psychology', 'money and social relationships', 'spending and well-being', 'gift giving and generosity', 'fee transparency and trust'];
+  var el = document.getElementById('typed');
+  if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { if (el) el.textContent = words[0]; return; }
+  var w = 0, c = 0, del = false;
+  (function tick() {
+    var word = words[w];
+    el.textContent = del ? word.slice(0, --c) : word.slice(0, ++c);
+    var wait = del ? 35 : 65;
+    if (!del && c === word.length) { del = true; wait = 1900; }
+    else if (del && c === 0) { del = false; w = (w + 1) % words.length; wait = 300; }
+    setTimeout(tick, wait);
+  })();
+})();
+
+/* ---------- publication filter + search ---------- */
+(function () {
+  var pubs = Array.prototype.slice.call(document.querySelectorAll('#pubList .pub'));
+  var search = document.getElementById('pubSearch');
+  var empty = document.getElementById('pubEmpty');
+  var active = 'all';
+
+  function apply() {
+    var q = search.value.trim().toLowerCase();
+    var shown = 0;
+    pubs.forEach(function (p) {
+      var tags = (p.dataset.tags || '');
+      var matchTag = active === 'all' || tags.indexOf(active) > -1;
+      var matchText = !q || p.textContent.toLowerCase().indexOf(q) > -1;
+      var show = matchTag && matchText;
+      p.classList.toggle('hidden', !show);
+      if (show) shown++;
+    });
+    empty.style.display = shown ? 'none' : 'block';
+  }
+
+  document.getElementById('pubFilters').addEventListener('click', function (e) {
+    var b = e.target.closest('.filt');
+    if (!b) return;
+    document.querySelectorAll('#pubFilters .filt').forEach(function (x) { x.classList.remove('active'); });
+    b.classList.add('active');
+    active = b.dataset.f;
+    apply();
+  });
+  search.addEventListener('input', apply);
+})();
+
+/* ---------- conferences ---------- */
+var CONFS = [
+  {y:2026, t:"Hello, Neighbor: Interactions with Weak Ties in One's Community Increase Prosocial Behavior", a:"with Kumar, A.", v:"Association for Consumer Research", loc:"Chicago, IL", k:"Talk"},
+  {y:2026, t:"Hello, Neighbor: Interactions with Weak Ties in One's Community Increase Prosocial Behavior", a:"with Kumar, A.", v:"Society for Consumer Psychology", loc:"San Diego, CA", k:"Talk"},
+  {y:2025, t:"Not All Add-On Fees are the Same: Consumers' Aversion to Opaque Fees", a:"with Raghunathan, R., & Srivastava, J.", v:"ACR Latin America Conference", loc:"São Paulo, Brazil", k:"Talk"},
+  {y:2025, t:"Add-On Fees Are Not All the Same: Consumers' Aversion to Opaque Fees", a:"with Raghunathan, R., & Srivastava, J.", v:"Boulder Summer Conference on Consumer Financial Decision Making", loc:"Boulder, CO", k:"Poster"},
+  {y:2024, t:"Not All Add-On Fees are the Same: Consumers' Aversion to Opaque Fees", a:"with Raghunathan, R., & Srivastava, J.", v:"ACR Asia Pacific Conference", loc:"Bali, Indonesia", k:"Talk"},
+  {y:2023, t:"Trickle Down Spending: The Role of Income Inequality on Gift Spending Decisions", a:"with Gershoff, A. D.", v:"Journal of the Association for Consumer Research webinar", loc:"Virtual", k:"Talk"},
+  {y:2023, t:"Hello, Neighbor: Interactions with Weak Ties in One's Community Can Increase Prosocial Behavior", a:"with Kumar, A.", v:"Association for Consumer Research", loc:"Seattle, WA", k:"Talk"},
+  {y:2023, t:"Hello, Neighbor: Interactions with Weak Ties in One's Community Increase Prosocial Behavior", a:"with Kumar, A.", v:"Society for Personality and Social Psychology", loc:"Atlanta, GA", k:"Poster"},
+  {y:2022, t:"A Venmo Effect on Relationships: Electronic Payment Makes Social Relations More Transactional and Experiences Less Enjoyable", a:"with Kumar, A.", v:"Society for Consumer Psychology", loc:"Virtual", k:"Talk"},
+  {y:2021, t:"Trickle Down Spending: Relative Income Effects on Consumer Spending in Social Relationships", a:"with Gershoff, A.", v:"Trans-Atlantic Doctoral Conference, London Business School", loc:"Virtual", k:"Talk"},
+  {y:2021, t:"A Venmo Effect on Relationships: Electronic Payment Makes Social Relations More Transactional and Experiences Less Enjoyable", a:"with Kumar, A.", v:"Society for Personality and Social Psychology", loc:"Virtual", k:"Talk"},
+  {y:2021, t:"Trickle Down Spending: Relative Income Effects on Consumer Spending in Social Relationships", a:"with Gershoff, A.", v:"Association for Consumer Research", loc:"Virtual", k:"Poster"},
+  {y:2020, t:"A Venmo Effect on Relationships: Electronic Payment Makes Social Relations More Transactional and Experiences Less Enjoyable", a:"with Kumar, A.", v:"Society for Judgment and Decision Making", loc:"Virtual", k:"Talk"},
+  {y:2020, t:"A Venmo Effect on Relationships: Electronic Payment Makes Social Relations More Transactional and Experiences Less Enjoyable", a:"with Kumar, A.", v:"Association for Psychological Science", loc:"Virtual", k:"Talk"},
+  {y:2020, t:"A Venmo Effect on Relationships: Electronic Payment Makes Social Relations More Transactional and Experiences Less Enjoyable", a:"with Kumar, A.", v:"Society for Consumer Psychology", loc:"Huntington Beach, CA", k:"Poster"},
+  {y:2019, t:"Why High (vs. Low) Skill Activities Make Consumers Happier, yet They Don't Choose Them", a:"with Raghunathan, R.", v:"University of Houston Doctoral Symposium", loc:"Houston, TX", k:"Talk"},
+  {y:2019, t:"Framing Zero: When Losing Nothing is Better Than Gaining Nothing", a:"with Wardley, M.", v:"Society for Consumer Psychology", loc:"Savannah, GA", k:"Talk"},
+  {y:2019, t:"Why High (vs. Low) Skill Activities Make Consumers Happier, yet They Don't Choose Them", a:"with Raghunathan, R.", v:"Society for Consumer Psychology", loc:"Savannah, GA", k:"Poster"}
+];
+(function () {
+  var list = document.getElementById('confList'), btn = document.getElementById('confMore'), LIMIT = 6, expanded = false;
+  list.innerHTML = CONFS.map(function (c) {
+    return '<article class="conf-item">' +
+      '<div class="conf-meta"><span class="conf-year">' + c.y + '</span>' +
+      '<span class="conf-venue">' + c.v + '</span>' +
+      '<span class="conf-type-tag">' + c.k + '</span></div>' +
+      '<div class="conf-title">' + c.t + '</div>' +
+      '<div class="pub-authors">' + c.a + '</div>' +
+      '<div class="conf-loc">📍 ' + c.loc + '</div></article>';
+  }).join('');
+  var items = Array.prototype.slice.call(list.children);
+  function render() {
+    items.forEach(function (el, i) { el.classList.toggle('hidden', !expanded && i >= LIMIT); });
+    btn.textContent = expanded ? 'Show fewer' : 'Show all ' + CONFS.length + ' presentations';
+  }
+  btn.addEventListener('click', function () { expanded = !expanded; render(); });
+  render();
+})();
+
+/* ---------- honors ---------- */
+var HONORS = [
+  {n:"Best Conference Theme Award", o:"Society for Consumer Psychology", y:2026, i:"🏆"},
+  {n:"Ukleja Center for Ethical Leadership Pedagogical Stipend", o:"Ethics Across the Curriculum, CSULB", y:2025, i:"🎖️"},
+  {n:"CSU Open Access Publication Grant", o:"California State University", y:2023, i:"📗"},
+  {n:"McCombs Professional Development Award Funds", o:"UT Austin, McCombs School of Business", y:2023, i:"💼"},
+  {n:"AMA Sheth Consortium Fellow", o:"UT Austin Marketing Department", y:2022, i:"🥇"},
+  {n:"McCombs–Provost Ph.D. Research Funds Grant", o:"UT Austin", y:"2021 & 2022", i:"🔬"},
+  {n:"Graduate Continuing Fellowship", o:"University of Texas at Austin — top 2% of doctoral students", y:2021, i:"🥇"},
+  {n:"Professional Development Award", o:"University of Texas at Austin", y:2021, i:"💼"},
+  {n:"Complimentary Preconference Registration Award", o:"Society for Personality and Social Psychology — top 3 working papers in topic area", y:2021, i:"🎟️"},
+  {n:"Fred Moore Assistant Instructor Award for Teaching Excellence", o:"UT Austin, McCombs School of Business", y:2020, i:"🍎"},
+  {n:"37th Doctoral Consortium Fellow", o:"University of Houston", y:2019, i:"🎓"},
+  {n:"Graduate School of Business Fellowship", o:"University of Texas at Austin", y:"2018–2020", i:"🎓"},
+  {n:"Bonham Research Funds", o:"University of Texas at Austin", y:"2018–2021", i:"🔬"},
+  {n:"Cooper Fellowship", o:"University of Texas at Austin", y:2019, i:"🎓"},
+  {n:"Jastrow Fellowship", o:"University of Arizona", y:2017, i:"🎓"},
+  {n:"Kaplan Scholarship", o:"University of Arizona", y:2014, i:"📘"},
+  {n:"Arizona Excellence Scholarship", o:"University of Arizona", y:2011, i:"📘"}
+];
+(function () {
+  var grid = document.getElementById('honorsGrid'), btn = document.getElementById('honorsMore'), LIMIT = 6, expanded = false;
+  grid.innerHTML = HONORS.map(function (h) {
+    return '<div class="honor-card"><div class="honor-header"><div class="honor-icon">' + h.i + '</div>' +
+      '<div><div class="honor-name">' + h.n + '</div><div class="honor-org">' + h.o + '</div></div></div>' +
+      '<span class="honor-year">' + h.y + '</span></div>';
+  }).join('');
+  var items = Array.prototype.slice.call(grid.children);
+  function render() {
+    items.forEach(function (el, i) { el.classList.toggle('hidden', !expanded && i >= LIMIT); });
+    btn.textContent = expanded ? 'Show fewer' : 'Show all ' + HONORS.length + ' honors';
+  }
+  btn.addEventListener('click', function () { expanded = !expanded; render(); });
+  render();
+})();
+
+/* ---------- Psychology Today posts ---------- */
+var PT = 'https://www.psychologytoday.com/us/blog/psychology-money-and-happiness/';
+var POSTS = [
+  ["2026-07","Can Your Social Network Shape Your Economic Future?","202607/can-your-social-network-shape-your-economic-future"],
+  ["2026-06","Why Financial Shame Makes Money Problems Worse","202606/why-financial-shame-makes-money-problems-worse"],
+  ["2026-06","Can Shopping Increase Loneliness?","202606/can-shopping-increase-loneliness"],
+  ["2026-05","Money as a Tool for Happiness Mindset","202605/money-as-a-tool-for-happiness-mindset"],
+  ["2026-04","What Old Psychology Can Teach Us About New Betting","202604/what-old-psychology-can-teach-us-about-new-betting"],
+  ["2026-03","How Money Impacts Your Attention and Pleasurable Experiences","202603/how-money-impacts-your-attention-and-pleasurable"],
+  ["2026-02","Should You Let Your College Student Live at Home?","202602/should-you-let-your-college-student-live-at-home"],
+  ["2026-01","Would You Take Money Advice From AI?","202601/would-you-take-money-advice-from-ai"],
+  ["2025-12","How Narcissists May Use Money to Get Their Way","202512/how-narcissists-may-use-money-to-get-their-way"],
+  ["2025-11","How Money Impacts Your Thinking Ability","202511/how-money-impacts-your-thinking-ability"],
+  ["2025-10","Do You Need to Be a Genius to Make a Lot of Money?","202510/do-you-need-to-be-a-genius-to-make-a-lot-of-money"],
+  ["2025-09","Is Being Agreeable Good or Bad for You?","202509/is-being-agreeable-good-or-bad-for-you"],
+  ["2025-08","The Purchase Trap: Are You Spending for Joy or Growth?","202508/the-purchase-trap-are-you-spending-for-joy-or-growth"],
+  ["2025-07","What Is the Best Way to Emotionally Support Someone?","202507/what-is-the-best-way-to-emotionally-support-someone"],
+  ["2025-06","Should You Die Broke?","202506/should-you-die-broke"],
+  ["2025-05","Timeless Principles From History to Live a Successful Life","202505/timeless-principles-from-history-to-live-a-successful"],
+  ["2025-04","Why You Avoid Skilled Activities Even Though They Make You Happier","202504/why-you-avoid-skilled-activities-even-though-they-make"],
+  ["2025-03","How to Teach Your Kids About Money the Right Way","202503/how-to-teach-your-kids-about-money-the-right-way"],
+  ["2025-03","Why You Sabotage Yourself Financially","202503/why-you-sabotage-yourself-financially"],
+  ["2025-01","Why You Prefer Your Financial Opposite in Relationships","202501/why-you-prefer-your-financial-opposite-in-relationships"],
+  ["2024-12","Does Giving Late Gifts Harm Your Relationships?","202412/does-giving-late-gifts-harm-your-relationships"],
+  ["2024-08","How to Spend Time to Maximize Happiness","202408/how-to-spend-time-to-maximize-happiness"],
+  ["2024-06","One Way to Make Your Relationships More Satisfying","202406/one-way-to-make-your-relationships-more-satisfying"],
+  ["2024-03","How Emotions Impact Your Financial Decisions","202403/how-emotions-impact-your-financial-decisions"],
+  ["2023-11","How to Discuss Money in Your Romantic Relationship","202311/how-to-discuss-money-in-your-romantic-relationship"],
+  ["2023-09","Are People Fundamentally Greedy or Generous With Money?","202309/are-people-fundamentally-greedy-or-generous-with-money"],
+  ["2023-09","3 Tips for Financial Happiness in Your Relationship","202309/3-tips-for-financial-happiness-in-your-relationship"],
+  ["2023-06","How Businesses Trick You Into Tipping Extra","202306/how-businesses-trick-you-into-tipping-extra"],
+  ["2023-05","Junk Fees Gone Wild","202305/junk-fees-gone-wild"],
+  ["2023-05","How Spending Money Can Actually Make You Unhappy","202305/how-spending-money-can-actually-make-you-unhappy"],
+  ["2023-03","How Much Free Time Do You Need to Be Happy?","202303/research-shows-how-much-free-time-you-need-to-be-happy"],
+  ["2023-02","The Psychology Behind Obsessions With Cryptocurrency","202302/the-psychology-behind-obsessions-with-cryptocurrency"],
+  ["2023-01","How to Spend Your Time Like a Millionaire and Become Happier","202301/how-to-spend-your-time-like-a-millionaire-and-become"],
+  ["2022-12","3 Simple Tips to Help You Pick the Perfect Gift","202212/3-simple-tips-to-help-you-pick-the-perfect-gift"],
+  ["2022-11","Does Spending a Lot Mean Someone Is Wealthy?","202211/does-spending-lot-mean-someone-is-wealthy"],
+  ["2022-08","A Simple Trick to Meet New People","202208/simple-trick-meet-new-people"],
+  ["2022-08","Financial Infidelity in Romantic Relationships","202208/financial-infidelity-in-romantic-relationships"],
+  ["2022-07","Why Those Who Overcame Poverty Have Less Sympathy for the Poor","202207/why-those-who-overcame-poverty-have-less-sympathy-the"],
+  ["2022-03","How Your Self-Esteem Influences What You Buy","202203/how-your-self-esteem-influences-what-you-buy"],
+  ["2022-03","How Happy Are Millionaires?","202203/how-happy-are-millionaires"],
+  ["2022-02","More Money, More Problems?","202202/more-money-more-problems"]
+];
+(function () {
+  var grid = document.getElementById('postGrid'),
+      chips = document.getElementById('yearChips'),
+      search = document.getElementById('postSearch'),
+      btn = document.getElementById('postMore'),
+      empty = document.getElementById('postEmpty'),
+      LIMIT = 9, expanded = false, year = 'all';
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  grid.innerHTML = POSTS.map(function (p) {
+    var parts = p[0].split('-');
+    var label = MON[parseInt(parts[1], 10) - 1] + ' ' + parts[0];
+    return '<article class="post" data-year="' + parts[0] + '">' +
+      '<div class="post-date">' + label + '</div>' +
+      '<a class="post-title" href="' + PT + p[2] + '" target="_blank" rel="noopener">' + p[1] + '</a>' +
+      '<a class="post-link" href="' + PT + p[2] + '" target="_blank" rel="noopener">Read on Psychology Today →</a></article>';
+  }).join('');
+
+  var years = [];
+  POSTS.forEach(function (p) { var y = p[0].slice(0, 4); if (years.indexOf(y) < 0) years.push(y); });
+  chips.innerHTML = '<button class="ychip active" data-y="all">All</button>' +
+    years.map(function (y) { return '<button class="ychip" data-y="' + y + '">' + y + '</button>'; }).join('');
+
+  var items = Array.prototype.slice.call(grid.children);
+
+  function render() {
+    var q = search.value.trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function (el) {
+      var ok = (year === 'all' || el.dataset.year === year) &&
+               (!q || el.textContent.toLowerCase().indexOf(q) > -1);
+      if (ok) { shown++; el.classList.toggle('hidden', !expanded && shown > LIMIT); }
+      else { el.classList.add('hidden'); }
+    });
+    empty.style.display = shown ? 'none' : 'block';
+    btn.style.display = shown > LIMIT ? 'inline-block' : 'none';
+    btn.textContent = expanded ? 'Show fewer' : 'Show all ' + shown + ' posts';
+  }
+
+  chips.addEventListener('click', function (e) {
+    var b = e.target.closest('.ychip');
+    if (!b) return;
+    chips.querySelectorAll('.ychip').forEach(function (x) { x.classList.remove('active'); });
+    b.classList.add('active');
+    year = b.dataset.y; expanded = false; render();
+  });
+  search.addEventListener('input', function () { expanded = false; render(); });
+  btn.addEventListener('click', function () { expanded = !expanded; render(); });
+  render();
+})();
+
+/* ---------- scroll reveal ---------- */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('vis'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('vis'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
